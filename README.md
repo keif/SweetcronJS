@@ -3,8 +3,9 @@
  - AngularJS <version>?
  - Node.js <version>?
  - MongoDB <version>?
+ - JSCS/JSHint via SublimeLinter
 
- Todo:
+### Todo:
  - hide new comments box: use ng-hide to hide the 'new comment' and 'new post' input box until a user clicks a button to see the field
  - on submission, generate a positive vote tied to submitter
  - comment voting to match post voting (unique voting)
@@ -20,6 +21,8 @@ Sweetcron.JS is under active development, unlike it's PHP counterpart. I've lift
 
 The original app was written in 2008, and lives here:
 - https://github.com/yongfook/sweetcron
+
+## ORIGINAL SWEETCRON CONTENT BELOW
 
 ## Documentation
 The original documentation for Sweetcron is on Google Code:
