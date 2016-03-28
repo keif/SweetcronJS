@@ -18,21 +18,22 @@
 
 Sweetcron.JS is under active development, unlike it's PHP counterpart. I've lifted some references and such to the original code and will work on updating the below information to more recent relevance.
 
-The original app was written in 2008, and lives here: https://github.com/yongfook/sweetcron
+The original app was written in 2008, and lives here:
+- https://github.com/yongfook/sweetcron
 
 ## Documentation
 The original documentation for Sweetcron is on Google Code:
-http://code.google.com/p/sweetcron/w/list
+- http://code.google.com/p/sweetcron/w/list
 
 ## Tutorial
 Here's a really good one written by Nettuts:
-http://net.tutsplus.com/tutorials/site-builds/building-a-custom-lifestream-website-with-sweetcron/
+- http://net.tutsplus.com/tutorials/site-builds/building-a-custom-lifestream-website-with-sweetcron/
 
 ## Press
 Sweetcron was popular in its day. Here's some blogs about it:
-http://www.carbongraffiti.com/2008/11/25-of-the-best-sweetcron-powered-lifestreams/
-http://www.readwriteweb.com/archives/sweetcron_lifestream_self_hosted.php
-http://500hats.typepad.com/500blogs/2008/08/omg-sweetcron-r.html
+- http://www.carbongraffiti.com/2008/11/25-of-the-best-sweetcron-powered-lifestreams/
+- http://www.readwriteweb.com/archives/sweetcron_lifestream_self_hosted.php
+- http://500hats.typepad.com/500blogs/2008/08/omg-sweetcron-r.html
 
 ## What is Sweetcron?
 Sweetcron is a self-hosted lifestreaming application that supports themes & plugins. It is based on the CodeIgniter php framework, from EllisLab.
