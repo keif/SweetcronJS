@@ -1,0 +1,42 @@
+{
+	"excludeFiles": [
+	  	"node_modules/**",
+	  	"coverage"
+	],
+    "disallowDanglingUnderscores": {
+        "allExcept": [
+            "_id"
+        ]
+    },
+    // "disallowSpacesInFunctionExpression": {
+    //     "beforeOpeningRoundBrace": true
+    // },
+    "disallowKeywords": [ "with" ],
+    "disallowKeywordsOnNewLine": [ "else" ],
+    // "disallowLeftStickedOperators": [ "?", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=" ],
+    "disallowMixedSpacesAndTabs": true,
+    "disallowMultipleLineBreaks": true,
+    "disallowMultipleSpaces": true,
+    // "disallowRightStickedOperators": [ "?", "/", "*", ":", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
+    "disallowSpaceAfterObjectKeys": true,
+    "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-"],
+    "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
+    "disallowTrailingComma": true,
+    "disallowTrailingWhitespace": true,
+    "disallowUnusedParams": true,
+	"requireCurlyBraces": [ "if", "else", "for", "while", "do" ],
+    "requireDollarBeforejQueryAssignment": true,
+    // "requireLeftStickedOperators": [ "," ],
+    "requireLineFeedAtFileEnd": true,
+    // "requireMultipleVarDecl": true,
+    // "requireRightStickedOperators": [ "!" ],
+    "requireSpaceAfterKeywords": [ "if", "else", "for", "while", "do", "switch", "return" ],
+    "requireSpaceBeforeBinaryOperators": ["+", "-", "/", "*", "=", "==", "===", "!=", "!=="],
+    "requireSpacesInFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "requireSpacesInsideArrayBrackets": "all",
+    "requireSpacesInsideObjectBrackets": "all",
+    "requireVarDeclFirst": true,
+    "validateLineBreaks": "LF"
+}
