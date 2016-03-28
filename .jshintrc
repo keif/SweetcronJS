@@ -9,7 +9,7 @@
     "camelcase": false, // true: Identifiers must be in camelCase
     "curly": true, // true: Require {} for every new block or scope
     "eqeqeq": true, // true: Require triple equals (===) for comparison
-    "es5": false,
+    // "es5" : true,
     "forin": true, // true: Require filtering for..in loops with obj.hasOwnProperty()
     "freeze": true, // true: prohibits overwriting prototypes of native objects such as Array, Date etc.
     "immed": false, // true: Require immediate invocations to be wrapped in parens e.g. `(function () { } ());`
@@ -43,7 +43,7 @@
     "boss": false, // true: Tolerate assignments where comparisons would be expected
     "debug": false, // true: Allow debugger statements e.g. browser breakpoints.
     "eqnull": false, // true: Tolerate use of `== null`
-    "esversion": 5, // {int} Specify the ECMAScript version to which the code must adhere.
+    // "esversion": 5, // {int} Specify the ECMAScript version to which the code must adhere.
     "moz": false, // true: Allow Mozilla specific syntax (extends and overrides esnext features)
     // (ex: `for each`, multiple try/catch, function expression…)
     "evil": false, // true: Tolerate use of `eval` and `new Function()`
@@ -89,7 +89,7 @@
 
     // Custom Globals
     "globals": {
-        "angular": true,
+        "angular": false,
         "browser": true,
         "by": true,
         "element": true,

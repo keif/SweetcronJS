@@ -3,6 +3,7 @@
  - AngularJS <version>?
  - Node.js <version>?
  - MongoDB <version>?
+ - Grunt
  - JSCS/JSHint via SublimeLinter
 
 ### Todo:
@@ -16,6 +17,7 @@
  - user profiles
  - user roles (admin, user)
  - REORG ALL THE FILES
+ - General INSTALL instructions beyond "get node"
 
 Sweetcron.JS is under active development, unlike it's PHP counterpart. I've lifted some references and such to the original code and will work on updating the below information to more recent relevance.
 
