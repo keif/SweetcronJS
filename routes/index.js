@@ -1,6 +1,6 @@
 /*jslint node: true */
 "use strict";
-
+var pjson = require('../package.json');
 var express = require('express');
 var passport = require('passport');
 var jwt = require('express-jwt');
@@ -132,7 +132,8 @@ var vote = function (req, res, next, num) {
 // router.get('/', function (req, res, next) {
 router.get('/', function (req, res) {
 	res.render('index', {
-		title: 'Express'
+		title: 'Sweetcron.JS',
+		version: pjson.version
 	});
 });
 

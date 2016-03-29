@@ -1,10 +1,35 @@
 module.exports = function ( grunt ) {
+	"use strict";
 
-	// Project configuration.
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
+		compass: {
+			dist: {
+				options: {
+					sassDir: 'public/scss',
+					cssDir: 'public/css',
+					environment: 'development',
+					outputStyle: 'compressed'
+				}
+			}
+		},
 		concat: {
-			// concat task configuration goes here.
+			// dist: {
+			// 	src: [
+			// 		'public/js/modules/module1.js',
+			// 		'public/js/modules/module2.js'
+			// 	],
+			// 	dest: 'public/js/main.js'
+			// },
+			dist: {
+				src: [
+					'public/scss/*.scss'
+				],
+				dest: 'public/css/main.css'
+			},
+			options: {
+				separator: 'rn'
+			}
 		},
 		env: {
 			options: {
@@ -49,10 +74,28 @@ module.exports = function ( grunt ) {
 			}
 		},
 		sass: {
+			options: {
+				check: true,
+				style: "compact",
+				lineNumbers: true
+			},
 			dist: {
-				files: {
-					'public/css/style.css': 'public/sass/style.scss'
-				}
+				files: [ {
+					expand: true, // Enable dynamic expansion.
+					cwd: 'public/', // Src matches are relative to this path.
+					src: [ '**/*.scss' ], // Actual pattern(s) to match.
+					dest: 'public/css/', // Destination path prefix.
+					ext: '.css', // Dest filepaths will have this extension.
+					extDot: 'first' // Extensions in filenames begin after the first dot
+				} ]
+				// files: {
+				// 	// 'destination': 'source'
+				// 	// main styles
+				// 	'public/css/main.css': 'public/scss/main.scss',
+				// 	// page styles
+				// 	'public/css/admin.css': 'public/scss/pages/_admin.scss',
+				// 	'public/css/home.css': 'public/scss/pages/_home.scss'
+				// }
 			}
 		},
 		watch: {
@@ -87,7 +130,8 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	// Load the plugin that provides the "uglify" task.
+	grunt.loadNpmTasks( 'grunt-contrib-compass' );
+	grunt.loadNpmTasks( 'grunt-contrib-concat' );
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-contrib-nodeunit' );
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
@@ -98,6 +142,7 @@ module.exports = function ( grunt ) {
 	// grunt.registerTask( 'dev', [ 'env:dev', 'lint', 'server', 'watch' ] );
 	// grunt.registerTask( 'build', [ 'env:build', 'lint', 'other:build:tasks' ] );
 	// Default task(s).
+	// grunt.registerTask( 'sass', [ 'concat', 'sass' ] );
 	grunt.registerTask( 'default', [ 'env:dev', 'sass', 'jshint', 'uglify' ] );
 
 };

@@ -1,0 +1,24 @@
+<% if (settings.env === 'development') { %>
+<!-- views/partials/head.ejs -->
+<% } %>
+<meta charset="UTF-8">
+<title><% title %></title>
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<% if (settings.env === 'development') { %>
+<link href="/css/main.css" rel="stylesheet">
+<% } else { %>
+<link href="/css/main.css" rel="stylesheet"><!-- ideally minified, concatenated -->
+<% } %>
+
+<% if (settings.env === 'development') { %>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+<script src="/javascripts/angularApp.js"></script>
+<% } else { %>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+<script src="/js/angularApp.min.js"></script>
+<% } %>

@@ -1,20 +1,9 @@
-<html>
-
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-	<title>SweetCron.JS</title>
-
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link href="/stylesheets/style.css" rel="stylesheet">
-
-	<% if (settings.env === 'development') { %>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
-	<script src="/javascripts/angularApp.js"></script>
-	<% } else { %>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
-	<script src="/js/angularApp.min.js"></script>
-	<% } %>
+<% include partials/head %>
 </head>
 
 <body ng-app="sweetcron" ng-controller="MainCtrl">
@@ -33,118 +22,8 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/ng-template" id="/home.html">
-		<!-- Template: Homepage -->
-		<div class="page-header">
-			<h1><a ui-sref="home" title="SweetCron.JS">SweetCron.JS</a></h1>
-		</div>
-		<!-- show all posts, sorted by upvotes -->
-		<div class="row posts" ng-repeat="post in posts | orderBy:'-upvotes'">
-			<div class="col-xs-12 col-md-12">
-				<a class="btn btn-success btn-xs" ng-click="incrementUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span>{{post.upvotes}}</a>
-				<a class="btn btn-danger btn-xs" ng-click="incrementDownvotes(post)"><span class="glyphicon glyphicon-thumbs-down"></span>{{post.downvotes}}</a>
-				<span>
-				<a ng-show="post.link" href="{{post.link}}">{{post.title}}</a>
-				<span ng-hide="post.link">{{post.title}}</span>
-				<span ng-show="post.author">posted by {{post.author}}</span>
-				<span ng-show="post.comments.length"> | <a href="#/posts/{{post._id}}">Comments <span class="badge">{{post.comments.length}}</span></a>
-				</span>
-				<span ng-hide="post.comments.length"> | <a href="#/posts/{{post._id}}">Comment</a></span>
-				<!-- Link for deleting post-->
-				<a href="#" class="btn btn-danger btn-xs pull-right" ng-show="isCurrentUser(post)" ng-click="deletePost(post)"><i class="icon-trash icon-white"></i> Delete </a>
-				</span>
-			</div>
-		</div>
-		<form class="form-add-post" ng-submit="addPost()" ng-show="isLoggedIn()">
-			<h3>Add a new post</h3>
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Title" ng-model="title">
-			</div>
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Link" ng-model="link">
-			</div>
-			<button type="submit" class="btn btn-primary">Post</button>
-		</form>
-		<div ng-hide="isLoggedIn()">
-			<h3>You need to <a ui-sref="login">Log In</a> or <a ui-sref="register">Register</a> before you can add a post.</h3>
-		</div>
-	</script>
-	<script type="text/ng-template" id="/login.html">
-		<!-- Template: login -->
-		<div class="page-header">
-			<h1><a ui-sref="home" title="SweetCron.JS">SweetCron.JS</a></h1>
-		</div>
-		<div ng-show="error" class="alert alert-danger row" role="alert">
-			<span>{{ error.message }}</span>
-		</div>
-		<form class="form-login" ng-submit="logIn()">
-			<h3>Log In</h3>
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Username" ng-model="user.username">
-			</div>
-			<div class="form-group">
-				<input type="password" class="form-control" placeholder="Password" ng-model="user.password">
-			</div>
-			<button type="submit" class="btn btn-primary">Log In</button>
-		</form>
-	</script>
-	<script type="text/ng-template" id="/posts.html">
-		<!-- Template: post -->
-		<div class="page-header">
-			<h1><a ui-sref="home" title="SweetCron.JS">SweetCron.JS</a></h1>
-		</div>
-		<div class="panel panel-default">
-			<!-- single post view -->
-			<div class="panel-heading">
-				<div class="buttons" style="float: left; margin-right: 15px;">
-					<a class="btn btn-success btn-xs" ng-click="incrementPostUpvotes(post)"><span class="glyphicon glyphicon-thumbs-up"></span>{{post.upvotes}}</a>
-					<a class="btn btn-danger btn-xs" ng-click="incrementPostDownvotes(post)"><span class="glyphicon glyphicon-thumbs-down"></span>{{post.downvotes}}</a>
-				</div>
-				<h3 class="panel-title">
-				<a ng-show="post.link" href="{{post.link}}">{{post.title}}</a>
-				<span ng-hide="post.link">{{post.title}}</span>
-
-				<!-- Link for deleting post-->
-				<a href="#" class="btn btn-danger btn-xs pull-right" ng-show="isCurrentUser(post)" ng-click="deletePost(post)"><i class="icon-trash icon-white"></i> Delete </a>
-			</h3>
-			</div>
-			<!-- show all comments, sorted by upvotes -->
-			<div class="panel-body comment" ng-repeat="comment in post.comments | orderBy:'-upvotes'">
-				<a class="btn btn-success btn-xs" ng-click="incrementCommentUpvotes(comment)"><span class="glyphicon glyphicon-thumbs-up"></span>{{comment.upvotes}}</a>
-				<a class="btn btn-danger btn-xs" ng-click="incrementCommentDownvotes(comment)"><span class="glyphicon glyphicon-thumbs-down"></span>{{comment.downvotes}}</a> - by {{comment.author}}:
-				<span>{{comment.body}}</span>
-			</div>
-		</div>
-		<form class="form-add-comment" ng-submit="addComment()" ng-show="isLoggedIn()">
-			<h3>Add a new comment</h3>
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Comment" ng-model="body">
-			</div>
-			<button type="submit" class="btn btn-primary">Post</button>
-		</form>
-		<div ng-hide="isLoggedIn()">
-			<h3>You need to <a ui-sref="login">Log In</a> or <a ui-sref="register">Register</a> before you can comment.</h3>
-		</div>
-	</script>
-	<script type="text/ng-template" id="/register.html">
-		<!-- Template: register -->
-		<div class="page-header">
-			<h1><a ui-sref="home" title="SweetCron.JS">SweetCron.JS</a></h1>
-		</div>
-		<div ng-show="error" class="alert alert-danger row">
-			<span>{{ error.message }}</span>
-		</div>
-		<form class="form-register" ng-submit="register()">
-			<h3>Register</h3>
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Username" ng-model="user.username">
-			</div>
-			<div class="form-group">
-				<input type="password" class="form-control" placeholder="Password" ng-model="user.password">
-			</div>
-			<button type="submit" class="btn btn-primary">Register</button>
-		</form>
-	</script>
+	<% include partials/footer %>
+	<% include partials/templates %>
 </body>
 
 </html>
