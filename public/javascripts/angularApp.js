@@ -11,7 +11,13 @@ app.config( [
 			.state( 'home', {
 				url: '/home',
 				templateUrl: '/home.html',
-				controller: 'MainCtrl',
+				// controller: 'MainCtrl',
+				controller: function ( $scope ) {
+					console.log($scope.$parent.title);
+					console.log($scope.$parent.version);
+					$scope.title = $scope.$parent.title;
+					$scope.version = $scope.$parent.version;
+				},
 				resolve: {
 					postPromise: [
 						'posts',
@@ -20,7 +26,7 @@ app.config( [
 						}
 					]
 				},
-				title: 'Flapper News: Homepage'
+				title: 'Sweetcron.JS: Home'
 			} )
 			.state( 'login', {
 				url: '/login',
@@ -35,7 +41,7 @@ app.config( [
 						}
 					}
 				],
-				title: 'Flapper News: Login'
+				title: 'Sweetcron.JS: Login'
 			} )
 			.state( 'posts', {
 				url: '/posts/{id}',
@@ -60,7 +66,7 @@ app.config( [
 						}
 					]
 				},
-				title: 'Flapper News: Posts'
+				title: 'Sweetcron.JS: Posts'
 			} )
 			.state( 'register', {
 				url: '/register',
@@ -75,7 +81,7 @@ app.config( [
 						}
 					}
 				],
-				title: 'Flapper News: Register'
+				title: 'Sweetcron.JS: Register'
 			} );
 
 		$urlRouterProvider.otherwise( 'home', {
@@ -221,7 +227,7 @@ app.factory( 'auth', [
 		};
 
 		auth.getToken = function () {
-			return $window.localStorage[ 'flapper-news-token' ];
+			return $window.localStorage[ 'sweetcronjs-token' ];
 		};
 
 		auth.isCurrentUser = function ( user ) {
@@ -257,7 +263,7 @@ app.factory( 'auth', [
 		};
 
 		auth.logOut = function () {
-			$window.localStorage.removeItem( 'flapper-news-token' );
+			$window.localStorage.removeItem( 'sweetcronjs-token' );
 		};
 
 		auth.register = function ( user ) {
@@ -268,7 +274,7 @@ app.factory( 'auth', [
 		};
 
 		auth.saveToken = function ( token ) {
-			$window.localStorage[ 'flapper-news-token' ] = token;
+			$window.localStorage[ 'sweetcronjs-token' ] = token;
 		};
 
 		return auth;
@@ -280,6 +286,9 @@ app.controller( 'MainCtrl', [
 	'posts',
 	'auth',
 	function ( $scope, posts, auth ) {
+		$scope.title = window.title;
+		$scope.version = window.version;
+
 		$scope.isLoggedIn = auth.isLoggedIn;
 		$scope.posts = posts.posts;
 

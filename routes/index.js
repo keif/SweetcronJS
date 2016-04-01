@@ -131,10 +131,13 @@ var vote = function (req, res, next, num) {
 // GET home page.
 // router.get('/', function (req, res, next) {
 router.get('/', function (req, res) {
-	res.render('index', {
-		title: 'Sweetcron.JS',
-		version: pjson.version
-	});
+	var data = {
+		'title': 'Sweetcron.JS',
+		'version': pjson.version
+	};
+
+	console.log(data);
+	res.render('index', data);
 });
 
 // preload comments object
